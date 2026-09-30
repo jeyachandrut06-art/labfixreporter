@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabFix - Report a Problem</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">LF</div>
+            <div>
+                <h1>LabFix</h1>
+                <p>Computer Lab Issue Reporting System</p>
+            </div>
+        </div>
+        <span class="online-badge">● Online</span>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <span class="eyebrow">LAB SUPPORT</span>
+            <h2>Report a Lab Problem</h2>
+            <p>Submit a computer or laboratory issue and the lab support team can review it.</p>
+        </section>
+
+        <section class="card">
+            <div id="message" class="message hidden"></div>
+
+            <form id="reportForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="student_name">Student Name <span>*</span></label>
+                        <input id="student_name" name="student_name" type="text"
+                               placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="lab_name">Lab Name <span>*</span></label>
+                        <input id="lab_name" name="lab_name" type="text"
+                               placeholder="e.g. Programming Lab" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="pc_number">PC Number <span>*</span></label>
+                        <input id="pc_number" name="pc_number" type="text"
+                               placeholder="e.g. PC-12" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="problem_type">Problem Type <span>*</span></label>
+                        <select id="problem_type" name="problem_type" required>
+                            <option value="">Select a problem</option>
+                            <option value="Hardware">Hardware</option>
+                            <option value="Software">Software</option>
+                            <option value="Network">Network</option>
+                            <option value="Internet">Internet</option>
+                            <option value="Login / Account">Login / Account</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field full">
+                        <label for="description">Problem Description <span>*</span></label>
+                        <textarea id="description" name="description" rows="6"
+                                  placeholder="Describe the problem clearly..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button id="submitButton" type="submit">
+                        <span id="buttonText">Submit Report</span>
+                        <span id="spinner" class="spinner hidden"></span>
+                    </button>
+                    <p class="required-note">* Required fields</p>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>LabFix &copy; 2026 — Laboratory Support System</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

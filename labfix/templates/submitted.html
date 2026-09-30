@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabFix - Report Submitted</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='submitted.css') }}">
+</head>
+<body>
+    <main class="success-page">
+        {% if report %}
+        <section class="success-card">
+            <div class="success-icon">✓</div>
+            <p class="eyebrow">LABFIX</p>
+            <h1>Report Submitted Successfully</h1>
+            <p class="subtitle">
+                Your report has been saved to the database.
+            </p>
+
+            <div class="reference-box">
+                <span>Report ID</span>
+                <strong>#{{ report.id }}</strong>
+            </div>
+
+            <div class="details">
+                <div class="detail">
+                    <span>Student Name</span>
+                    <strong>{{ report.student_name }}</strong>
+                </div>
+
+                <div class="detail">
+                    <span>Lab Name</span>
+                    <strong>{{ report.lab_name }}</strong>
+                </div>
+
+                <div class="detail">
+                    <span>PC Number</span>
+                    <strong>{{ report.pc_number }}</strong>
+                </div>
+
+                <div class="detail">
+                    <span>Problem Type</span>
+                    <strong>{{ report.problem_type }}</strong>
+                </div>
+
+                <div class="detail full">
+                    <span>Description</span>
+                    <p>{{ report.description }}</p>
+                </div>
+
+                <div class="detail">
+                    <span>Status</span>
+                    <strong class="status">{{ report.status }}</strong>
+                </div>
+
+                <div class="detail">
+                    <span>Submitted At</span>
+                    <strong>{{ report.created_at }}</strong>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="/" class="button secondary">Submit Another Report</a>
+                <button class="button primary" onclick="window.print()">Print Details</button>
+            </div>
+        </section>
+
+        {% else %}
+        <section class="success-card">
+            <div class="error-icon">!</div>
+            <h1>Report Not Found</h1>
+            <p class="subtitle">
+                We could not find the requested report in the database.
+            </p>
+            {% if error %}
+                <p class="error-text">{{ error }}</p>
+            {% endif %}
+            <a href="/" class="button primary">Back to LabFix</a>
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>
